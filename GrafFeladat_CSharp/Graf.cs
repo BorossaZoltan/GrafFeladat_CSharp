@@ -157,6 +157,42 @@ namespace GrafFeladat_CSharp
 
         }
 
+        public bool Osszefuggo()
+        {
+            HashSet<int> bejart = new HashSet<int>();
+
+            Queue<int> kovetkezok = new Queue<int>();
+            kovetkezok.Enqueue(0); // Tetszőleges, mondjuk 0 kezdőpont
+            bejart.Add(0);
+
+            while (kovetkezok.Count != 0)
+            {
+                int k = kovetkezok.Dequeue();
+
+                // Bejárás közben nem kell semmit csinálni
+
+                foreach (var el in this.elek)
+                {
+                    if ((el.Csucs1 == k) && (!bejart.Contains(el.Csucs2)))
+                    {
+                        kovetkezok.Enqueue(el.Csucs2);
+                        bejart.Add(el.Csucs2);
+                    }
+                }
+            }
+            // A végén megvizsgáljuk, hogy minden pontot bejártunk-e
+            if (bejart.Count == this.csucsokSzama)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+
         public override string ToString()
         {
             string str = "Csucsok:\n";

@@ -28,6 +28,10 @@ namespace GrafFeladat_CSharp
             graf.SzelessegiBejar(3);
             Console.WriteLine("Mélységi bejárás sorrend csúcsok");
             graf.MelysegiBejar(3);
+            Console.WriteLine("Összefüggőség lefut");
+            graf.Osszefuggo();
+
+
             Console.ReadLine();
         }
     }
