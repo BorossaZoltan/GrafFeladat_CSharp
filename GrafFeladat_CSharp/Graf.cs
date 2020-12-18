@@ -83,9 +83,42 @@ namespace GrafFeladat_CSharp
                     elek.Remove(el);
                 }
             }
+        }
 
-            
-            
+        public void SzelessegiBejar(int kezdopont)
+        {
+
+            // Kezdetben egy pontot sem jártunk be
+            HashSet<int> bejart = new HashSet<int>();
+
+            // A következőnek vizsgált elem a kezdőpont
+            Queue<int> kovetkezok = new Queue<int>();
+            kovetkezok.Enqueue(kezdopont);
+            bejart.Add(kezdopont);
+
+            // Amíg van következő, addig megyünk
+            while (kovetkezok.Count != 0)
+            {
+                // A sor elejéről vesszük ki
+                int k = kovetkezok.Dequeue();
+
+                // Elvégezzük a bejárási műveletet, pl. a konzolra kiírást:
+                Console.WriteLine(this.csucsok[k]);
+
+                foreach (var el in this.elek)
+                {
+                    // Megkeressük azokat az éleket, amelyek k-ból indulnak
+                    // Ha az él másik felét még nem vizsgáltuk, akkor megvizsgáljuk
+                    if ((el.Csucs1 == k) && (!bejart.Contains(el.Csucs2)))
+                    {
+                        // A sor végére és a bejártak közé szúrjuk be
+                        kovetkezok.Enqueue(el.Csucs2);
+                        bejart.Add(el.Csucs2);
+                    }
+                }
+
+                // Jöhet a sor szerinti következő elem
+            }
 
         }
 

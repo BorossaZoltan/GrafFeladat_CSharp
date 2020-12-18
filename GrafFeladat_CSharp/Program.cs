@@ -20,8 +20,12 @@ namespace GrafFeladat_CSharp
             graf.Hozzaad(4, 5);
             graf.Hozzaad(2, 4);
             graf.Torles(0, 1);
+            
+            
 
             Console.WriteLine(graf);
+            Console.WriteLine("Szélességi bejárás sorrend csúcsok");
+            graf.SzelessegiBejar(3);
             Console.ReadLine();
         }
     }
