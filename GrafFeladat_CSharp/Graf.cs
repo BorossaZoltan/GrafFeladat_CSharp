@@ -193,6 +193,42 @@ namespace GrafFeladat_CSharp
 
         }
 
+        public Graf Feszitofa()
+        {
+            // Új, kezdetben él nélküli gráf
+            Graf fa = new Graf(this.csucsokSzama);
+
+            // Bejáráshoz szükséges adatszerkezetek
+            HashSet<int> bejart = new HashSet<int>();
+            Queue<int> kovetkezok = new Queue<int>();
+
+            // Tetszőleges, mondjuk 0 kezdőpont
+            kovetkezok.Enqueue(0);
+            bejart.Add(0);
+
+            // Szélességi bejárás
+            while (kovetkezok.Count != 0)
+            {
+                int aktualisCsucs = kovetkezok.Dequeue();
+
+                foreach (var el in this.elek)
+                {
+                    if (el.Csucs1 == aktualisCsucs)
+                    {
+                        if (!bejart.Contains(el.Csucs2))
+                        {
+                            bejart.Add(el.Csucs2);
+                            kovetkezok.Enqueue(el.Csucs2);
+                            // A fába is vegyük bele az élt
+                            fa.Hozzaad(el.Csucs1, el.Csucs2);
+                        }
+                    }
+                }
+            }
+            // Az eredményül kapott gráf az eredeti gráf feszítőfája
+            return fa;
+        }
+
 
         public override string ToString()
         {

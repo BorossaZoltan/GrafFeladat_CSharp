@@ -27,7 +27,8 @@ namespace GrafFeladat_CSharp
             Console.WriteLine("Mélységi bejárás sorrend csúcsok");
             graf.MelysegiBejar(3);
             Console.WriteLine("Összefüggő a gráfunk?\n"+ (graf.Osszefuggo()?"igen":"nem"));
-
+            Console.WriteLine(graf.Feszitofa().ToString());
+            
 
 
 
