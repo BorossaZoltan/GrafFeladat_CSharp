@@ -119,6 +119,7 @@ namespace GrafFeladat_CSharp
 
                 // Jöhet a sor szerinti következő elem
             }
+            
 
         }
 

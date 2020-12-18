@@ -21,15 +21,15 @@ namespace GrafFeladat_CSharp
             graf.Hozzaad(2, 4);
             graf.Torles(0, 1);
             
-            
-
             Console.WriteLine(graf);
             Console.WriteLine("Szélességi bejárás sorrend csúcsok");
             graf.SzelessegiBejar(3);
             Console.WriteLine("Mélységi bejárás sorrend csúcsok");
             graf.MelysegiBejar(3);
-            Console.WriteLine("Összefüggőség lefut");
-            graf.Osszefuggo();
+            Console.WriteLine("Összefüggő a gráfunk?\n"+ (graf.Osszefuggo()?"igen":"nem"));
+
+
+
 
 
             Console.ReadLine();
