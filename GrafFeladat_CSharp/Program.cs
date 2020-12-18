@@ -26,6 +26,8 @@ namespace GrafFeladat_CSharp
             Console.WriteLine(graf);
             Console.WriteLine("Szélességi bejárás sorrend csúcsok");
             graf.SzelessegiBejar(3);
+            Console.WriteLine("Mélységi bejárás sorrend csúcsok");
+            graf.MelysegiBejar(3);
             Console.ReadLine();
         }
     }

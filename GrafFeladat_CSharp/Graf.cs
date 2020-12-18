@@ -122,6 +122,41 @@ namespace GrafFeladat_CSharp
 
         }
 
+        public void MelysegiBejar(int kezdopont)
+        {
+            // Kezdetben egy pontot sem jártunk be
+            HashSet<int> bejart = new HashSet<int>();
+
+            // A következőnek vizsgált elem a kezdőpont
+            Stack<int> kovetkezok = new Stack<int>();
+            kovetkezok.Push(kezdopont);
+            bejart.Add(kezdopont);
+
+            // Amíg van következő, addig megyünk
+            while (kovetkezok.Count != 0)
+            {
+                // A verem tetejéről vesszük le
+                int k = kovetkezok.Pop();
+
+                // Elvégezzük a bejárási műveletet, pl. a konzolra kiírást:
+                Console.WriteLine(this.csucsok[k]);
+
+                foreach (var el in this.elek)
+                {
+                    // Megkeressük azokat az éleket, amelyek k-ból indulnak
+                    // Ha az él másik felét még nem vizsgáltuk, akkor megvizsgáljuk
+                    if ((el.Csucs1 == k) && (!bejart.Contains(el.Csucs2)))
+                    {
+                        // A verem tetejére és a bejártak közé adjuk hozzá
+                        kovetkezok.Push(el.Csucs2);
+                        bejart.Add(el.Csucs2);
+                    }
+                }
+                // Jöhet a sor szerinti következő elem
+            }
+
+        }
+
         public override string ToString()
         {
             string str = "Csucsok:\n";
